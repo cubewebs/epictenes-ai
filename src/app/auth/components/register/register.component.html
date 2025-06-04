@@ -1,0 +1,68 @@
+<div class="register-container" style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+  <h2 style="text-align: center;">Crear Cuenta</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div style="margin-bottom: 15px;">
+      <label for="firstName" style="display: block; margin-bottom: 5px;">Nombre:</label>
+      <input id="firstName" type="text" formControlName="firstName" style="width: 100%; padding: 8px; box-sizing: border-box;">
+      <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" style="color: red; font-size: 0.9em; margin-top: 5px;">
+        <small *ngIf="registerForm.get('firstName')?.errors?.['required']">Nombre es requerido.</small>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="lastName" style="display: block; margin-bottom: 5px;">Apellido:</label>
+      <input id="lastName" type="text" formControlName="lastName" style="width: 100%; padding: 8px; box-sizing: border-box;">
+      <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" style="color: red; font-size: 0.9em; margin-top: 5px;">
+        <small *ngIf="registerForm.get('lastName')?.errors?.['required']">Apellido es requerido.</small>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="email" style="display: block; margin-bottom: 5px;">Email:</label>
+      <input id="email" type="email" formControlName="email" style="width: 100%; padding: 8px; box-sizing: border-box;">
+      <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" style="color: red; font-size: 0.9em; margin-top: 5px;">
+        <small *ngIf="registerForm.get('email')?.errors?.['required']">Email es requerido.</small>
+        <small *ngIf="registerForm.get('email')?.errors?.['email']">Email inválido.</small>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="password" style="display: block; margin-bottom: 5px;">Contraseña:</label>
+      <input id="password" type="password" formControlName="password" style="width: 100%; padding: 8px; box-sizing: border-box;">
+      <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" style="color: red; font-size: 0.9em; margin-top: 5px;">
+        <small *ngIf="registerForm.get('password')?.errors?.['required']">Contraseña es requerida.</small>
+        <small *ngIf="registerForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</small>
+      </div>
+    </div>
+
+     <div style="margin-bottom: 15px;">
+      <label for="confirmPassword" style="display: block; margin-bottom: 5px;">Confirmar Contraseña:</label>
+      <input id="confirmPassword" type="password" formControlName="confirmPassword" style="width: 100%; padding: 8px; box-sizing: border-box;">
+      <div *ngIf="registerForm.get('confirmPassword')?.touched && (registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.dirty)" style="color: red; font-size: 0.9em; margin-top: 5px;">
+        <small>Las contraseñas no coinciden.</small>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <input id="terms" type="checkbox" formControlName="terms" style="margin-right: 5px;">
+      <label for="terms">Acepto los términos y condiciones.</label>
+      <div *ngIf="registerForm.get('terms')?.invalid && registerForm.get('terms')?.touched" style="color: red; font-size: 0.9em; margin-top: 5px;">
+        <small *ngIf="registerForm.get('terms')?.errors?.['requiredTrue']">Debes aceptar los términos.</small>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid || isLoading" style="width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      {{ isLoading ? 'Registrando...' : 'Registrar' }}
+    </button>
+
+    <div *ngIf="registrationSuccessMessage" style="color: green; margin-top: 15px; text-align: center;">
+      {{ registrationSuccessMessage }}
+    </div>
+    <div *ngIf="errorMessage" style="color: red; margin-top: 15px; text-align: center;">
+      {{ errorMessage }}
+    </div>
+  </form>
+  <p style="text-align: center; margin-top: 20px;">
+    ¿Ya tienes cuenta? <a routerLink="/auth/login">Inicia sesión aquí</a>
+  </p>
+</div>

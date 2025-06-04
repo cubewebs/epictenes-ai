@@ -1,0 +1,19 @@
+<header class="navbar">
+  <div class="logo">Epictenes</div>
+  <nav class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/profile" routerLinkActive="active">Profile</a>
+    <a routerLink="/session" routerLinkActive="active">Session</a>
+    <button class="login-logout-button" (click)="toggleLoginLogout()">{{ (isLoggedIn$ | async) ? 'Logout' : 'Login' }}</button>
+  </nav>
+  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+</header>
+<div class="mobile-menu" *ngIf="menuOpen">
+  <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="toggleMenu()">Home</a>
+  <a routerLink="profile" routerLinkActive="active" (click)="toggleMenu()">Profile</a>
+  <a routerLink="session" routerLinkActive="active" (click)="toggleMenu()">Session</a>
+  <button class="login-logout-button" (click)="toggleLoginLogout(); toggleMenu()">{{ (isLoggedIn$ | async) ? 'Logout' : 'Login' }}</button>
+</div>
+<main class="content">
+  <router-outlet></router-outlet>
+</main> 

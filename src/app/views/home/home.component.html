@@ -1,0 +1,16 @@
+<div class="home-container">
+  <h1>Super-psicólogo<span> IA</span>. Te guiará en tu camino.</h1>
+  <div *ngIf="user$ | async as user; else notLoggedIn">
+    <p>
+      Estás logueado como: <strong>{{ user.email }}</strong>
+    </p>
+    <p>User ID: {{ user.id }}</p>
+    <p>Esta es una ruta protegida.</p>
+    <button (click)="logout()" style="padding: 8px 15px; background-color: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">Cerrar Sesión</button>
+    <br><br>
+    <a routerLink="/profile" style="padding: 8px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Ver/Editar Perfil</a>
+  </div>
+  <ng-template #notLoggedIn>
+    <p>No estás logueado.</p>
+  </ng-template>
+</div>

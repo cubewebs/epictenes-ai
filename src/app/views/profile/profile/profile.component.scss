@@ -1,0 +1,124 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--background-color);
+    min-height: 100vh;
+    color: #e0e0e0;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  
+    h1 {
+      margin: 0;
+      margin-right: 10px;
+      color: #ffffff;
+    }
+  
+    .edit-icon {
+      cursor: pointer;
+      // Removed font-size and color from here as they'll be on the SVG
+      transition: opacity 0.2s ease; // Transition for opacity on hover
+  
+      &:hover {
+        opacity: 0.8; // Slightly dim on hover
+      }
+  
+      .edit-icon-svg {
+          display: block; /* Ensure the SVG is treated as a block element */
+          width: 24px; /* Set the desired size for the icon */
+          height: 24px;
+          // The fill="white" in the SVG itself controls the color
+      }
+    }
+}
+
+.loading-state {
+  font-size: 1.2em;
+  color: #b0b0b0;
+  margin-top: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-columns {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.column {
+  flex: 1;
+  width: 100%;
+}
+
+.profile-info-item {
+    width: 100%;
+    margin-bottom: 20px;
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #b0b0b0;
+    }
+
+    .display-value {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #555;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1em;
+        background-color: #3a3a3a;
+        color: #ffffff;
+        word-break: break-word;
+    }
+
+     &.terms-field {
+        display: flex;
+        align-items: center;
+        label {
+             margin-bottom: 0;
+             margin-right: 10px;
+        }
+        .terms-status {
+            font-size: 1em;
+            color: #ffffff;
+        }
+        .display-value {
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            color: #ffffff;
+            word-break: normal;
+        }
+     }
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.85em;
+    margin-top: 5px;
+}

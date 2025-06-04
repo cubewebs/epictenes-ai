@@ -1,0 +1,20 @@
+.main-btn {
+  background-color: var(--button-color); // Main background color
+  color: var(--button-text-color); // Text color
+  padding: 10px 20px; // Add some padding
+  border: none; // Remove default border
+  border-radius: 4px; // Add rounded corners
+  cursor: pointer; // Indicate it's clickable
+  font-size: 16px; // Set font size
+  transition: background-color 0.3s ease; // Smooth transition for hover
+
+  &:hover:not(:disabled) {
+    background-color: var(--button-hover-color); // Hover background color
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-color); // Grey background for disabled state
+    cursor: not-allowed; // Not-allowed cursor for disabled state
+    opacity: 0.7; // Slightly reduce opacity for disabled state
+  }
+}

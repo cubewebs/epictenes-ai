@@ -1,0 +1,110 @@
+<div class="profile-edit-container">
+  <h1>Edit Profile</h1>
+
+  <div *ngIf="isLoading" class="loading-state">Loading profile data...</div>
+
+  <form [formGroup]="profileEditForm" (ngSubmit)="saveProfile()" *ngIf="!isLoading && profileEditForm">
+    <div class="profile-edit-info card">
+      <!-- Two-column layout container -->
+      <div class="form-columns">
+        <!-- Left Column -->
+        <div class="column">
+          <!-- First Name -->
+          <div class="form-field">
+            <label for="first_name">First Name</label>
+            <input id="first_name" type="text" formControlName="first_name" placeholder="Enter first name">
+            <div *ngIf="profileEditForm.controls['first_name'].invalid && profileEditForm.controls['first_name'].touched" class="error-message">
+              First Name is required.
+            </div>
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-field">
+            <label for="last_name">Last Name</label>
+            <input id="last_name" type="text" formControlName="last_name" placeholder="Enter last name">
+            <div *ngIf="profileEditForm.controls['last_name'].invalid && profileEditForm.controls['last_name'].touched" class="error-message">
+              Last Name is required.
+            </div>
+          </div>
+
+          <!-- Username -->
+          <div class="form-field">
+            <label for="username">Username</label>
+            <input id="username" type="text" formControlName="username" placeholder="Enter username">
+          </div>
+
+          <!-- Phone -->
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" formControlName="phone" placeholder="Enter phone number">
+          </div>
+
+           <!-- Weight -->
+          <div class="form-field">
+            <label for="weight">Weight</label>
+            <input id="weight" type="number" formControlName="weight" placeholder="Enter weight">
+          </div>
+
+        </div>
+
+        <!-- Right Column -->
+        <div class="column">
+          <!-- Avatar URL -->
+           <div class="form-field">
+            <label for="avatar_url">Avatar URL</label>
+            <input id="avatar_url" type="text" formControlName="avatar_url" placeholder="Enter avatar URL">
+          </div>
+
+          <!-- Website -->
+          <div class="form-field">
+            <label for="website">Website</label>
+            <input id="website" type="text" formControlName="website" placeholder="Enter website URL">
+          </div>
+
+           <!-- Date of Birth -->
+          <div class="form-field">
+            <label for="dob">Date of Birth</label>
+            <input id="dob" type="date" formControlName="dob">
+          </div>
+
+           <!-- Height -->
+          <div class="form-field">
+            <label for="height">Height</label>
+            <input id="height" type="number" formControlName="height" placeholder="Enter height">
+          </div>
+
+           <!-- Role -->
+           <div class="form-field">
+            <label for="role">Role</label>
+            <input id="role" type="text" formControlName="role" placeholder="Enter role">
+          </div>
+        </div>
+      </div>
+
+      <!-- Terms (Checkbox - Read-only) outside of columns for potential full width -->
+       <div class="form-field terms-field">
+        <label for="terms">Terms Accepted</label>
+        <input id="terms" type="checkbox" formControlName="terms">
+        <span class="terms-status" *ngIf="profileEditForm.controls['terms'].value">Accepted</span>
+        <span class="terms-status" *ngIf="!profileEditForm.controls['terms'].value">Not Accepted</span>
+      </div>
+
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="cancel-btn" (click)="cancelEdit()">Cancel</button>
+      <app-main-btn
+        [label]="isSaving ? 'Saving...' : 'Save Changes'"
+        [disabled]="profileEditForm.invalid || isSaving"
+        (onClick)="saveProfile()">
+      </app-main-btn>
+    </div>
+
+  </form>
+
+  <div *ngIf="!isLoading && !currentUser">
+    Please log in to edit your profile.
+    <!-- Optionally add a login link -->
+  </div>
+
+</div>

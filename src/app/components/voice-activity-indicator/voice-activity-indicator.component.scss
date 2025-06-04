@@ -1,0 +1,13 @@
+.indicator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* Default width, can be made responsive */
+  height: 200px; /* Default height, can be made responsive */
+  margin-bottom: 20px;
+}
+
+canvas {
+  border-radius: 50%; /* Ensures the canvas itself is circular if needed, though drawing controls shape */
+  /* Add any additional styling for the canvas element itself, if necessary */
+} 

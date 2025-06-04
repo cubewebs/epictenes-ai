@@ -1,0 +1,106 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <h1>Profile</h1>
+    <!-- Pencil icon for editing -->
+    <ng-container *ngIf="currentUser">
+      <span class="edit-icon" (click)="navigateToEditProfile()" title="Edit Profile">
+        <!-- Use the SVG icon -->
+        <img src="assets/svg/icons/pencil.svg" alt="Edit Profile Icon" class="edit-icon-svg">
+      </span>
+    </ng-container>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-state">Loading profile...</div>
+
+  <!-- Display profile data directly if user and form data is available -->
+  <div class="profile-info card" *ngIf="!isLoading && currentUser && profileForm">
+    <div class="form-columns">
+        <!-- Left Column -->
+        <div class="column">
+            <!-- Email (from auth.users) -->
+            <div class="profile-info-item">
+              <label>Email:</label>
+              <div class="display-value">{{ profileForm.controls['email'].value }}</div>
+            </div>
+
+            <!-- First Name -->
+            <div class="profile-info-item">
+              <label>First Name:</label>
+              <div class="display-value">{{ profileForm.controls['first_name'].value }}</div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="profile-info-item">
+              <label>Last Name:</label>
+              <div class="display-value">{{ profileForm.controls['last_name'].value }}</div>
+            </div>
+
+             <!-- Username -->
+            <div class="profile-info-item">
+              <label>Username:</label>
+              <div class="display-value">{{ profileForm.controls['username'].value || 'N/A' }}</div>
+            </div>
+
+             <!-- Phone -->
+            <div class="profile-info-item">
+              <label>Phone:</label>
+              <div class="display-value">{{ profileForm.controls['phone'].value || 'N/A' }}</div>
+            </div>
+
+            <!-- Weight -->
+            <div class="profile-info-item">
+              <label>Weight:</label>
+              <div class="display-value">{{ profileForm.controls['weight'].value || 'N/A' }}</div>
+            </div>
+
+             <!-- Terms (Checkbox - read-only) -->
+            <div class="profile-info-item terms-field">
+              <label>Terms Accepted:</label>
+              <div class="display-value terms-status">
+                 {{ profileForm.controls['terms'].value ? 'Accepted' : 'Not Accepted' }}
+              </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="column">
+            <!-- Avatar URL -->
+             <div class="profile-info-item">
+              <label>Avatar URL:</label>
+              <div class="display-value">{{ profileForm.controls['avatar_url'].value || 'N/A' }}</div>
+            </div>
+
+            <!-- Website -->
+            <div class="profile-info-item">
+              <label>Website:</label>
+              <div class="display-value">{{ profileForm.controls['website'].value || 'N/A' }}</div>
+            </div>
+
+             <!-- Date of Birth -->
+            <div class="profile-info-item">
+              <label>Date of Birth:</label>
+              <div class="display-value">{{ profileForm.controls['dob'].value | date }}</div> <!-- Using date pipe -->
+            </div>
+
+            <!-- Height -->
+            <div class="profile-info-item">
+              <label>Height:</label>
+              <div class="display-value">{{ profileForm.controls['height'].value || 'N/A' }}</div>
+            </div>
+
+             <!-- Role -->
+            <div class="profile-info-item">
+              <label>Role:</label>
+              <div class="display-value">{{ profileForm.controls['role'].value || 'N/A' }}</div>
+            </div>
+        </div>
+    </div>
+    <!-- Add other profile data fields here -->
+  </div>
+
+  <div *ngIf="!isLoading && !currentUser">
+    Please log in to view your profile.
+    <!-- Optionally add a login link -->
+  </div>
+
+</div>

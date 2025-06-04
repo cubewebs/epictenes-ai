@@ -1,0 +1,168 @@
+/* Color palette including light and dark modes (Vercel-like) */
+:root {
+    --bg-color: #e0e1dd;
+    --text-color: #778da9;
+    --primary-color: #ff9800;
+    --secondary-color: #c1121f;
+    --tertiary-color: #778da9;
+    --button-color: #415a77;
+    --button-text-color: #ffffff;
+    --button-hover-color: #0051c3;
+    --button-hover-text-color: #ffffff;
+    --button-disabled-color: #cccccc;
+    --card-bg-color: #ffffff;
+    --card-border-color: #eaeaea;
+    --card-title-color: #000000;
+    --card-subtitle-color: #666666;
+    --card-text-color: #000000;
+    --card-hover-bg-color: #fafafa;
+    --card-hover-border-color: #eaeaea;
+    --card-hover-text-color: #000000;
+    --card-hover-color: var(--card-hover-bg-color);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-color: #415a77;
+        --primary-color: #ff9800;
+        --secondary-color: #c1121f;
+        --tertiary-color: #778da9;
+        --button-color: #415a77;
+        --button-text-color: #1a232d;
+        --button-hover-color: #f0f0f0;
+        --button-hover-text-color: #364a61;
+        --button-disabled-color: #cccccc;
+        --card-bg-color: #111111;
+        --card-border-color: #222222;
+        --card-title-color: #ffffff;
+        --card-subtitle-color: #999999;
+        --card-text-color: #eaeaea;
+        --card-hover-bg-color: #1a1a1a;
+        --card-hover-border-color: #333333;
+        --card-hover-text-color: #eaeaea;
+        --card-hover-color: var(--card-hover-bg-color);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--button-color);
+}
+
+h1 span {
+    color: var(--button-hover-color);
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--button-color);
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+h5 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--primary-color);
+}
+
+a {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--button-text-color);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: transparent;
+    border: none;
+    color: var(--button-hover-text-color);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.login-logout-button {
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    border: 1px solid var(--button-color);
+    padding: 0.5rem 2rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    outline: none;
+  }

@@ -1,0 +1,15 @@
+<div class="voice-chat-container">
+  <h1 class="voice-chat-title">Tu Agente Estoico te guiará en tu camino</h1>
+  <div>
+    <app-voice-activity-indicator [agentStatus]="indicatorStatus"></app-voice-activity-indicator>
+  </div>
+  <h3 class="voice-chat-subtitle">Inicia la sesión con un click en el botón de abajo</h3>
+  <div style="margin-bottom: 20px;">
+    <button id="startButton" (click)="startConversation()" class="action-start">Iniciar conversación</button>
+    <button id="stopButton" (click)="stopConversation()" class="action-stop" disabled>Detener conversación</button>
+  </div>
+  <div style="font-size: 18px;">
+    <p>Estado de la conexión: <span id="connectionStatus">{{connectionStatus | uppercase}}</span></p>
+    <p>Estado del agente: <span id="agentStatus">{{agentStatus | uppercase}}</span></p>
+  </div>
+</div> 

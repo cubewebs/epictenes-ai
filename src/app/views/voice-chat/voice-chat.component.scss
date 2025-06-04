@@ -1,0 +1,137 @@
+$card-bg-color: #141414;
+$card-text-color: #778da9;
+$card-border-color: #304468;
+
+.voice-chat-container {
+  min-height: 65vh;
+  min-width: 65vw;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  max-width: 600px;
+  margin: 140px auto;
+  border: 1px solid #202429;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: $card-bg-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .voice-chat-title {
+    color: $card-text-color;
+    margin-bottom: 75px;
+  }
+
+  h2 {
+    color: #333;
+    margin-bottom: 75px;
+  }
+
+  .controls {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .control-button {
+    margin: 20px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    color: white;
+
+    &:hover:not(:disabled) {
+      opacity: 0.9;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  .action-start {
+    padding: 10px 30px;
+    margin: 20px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--primary-color); // Green
+    &:hover:not(:disabled) {
+      background-color: #f3a621;
+    }
+  }
+
+  .action-stop {
+    padding: 10px 30px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--button-color); // Red
+    cursor: pointer;
+    color: var(--button-text-color);
+    &:hover:not(:disabled) {
+      background-color: #e53935;
+    }
+  }
+
+  .status-panel {
+    padding: 10px 30px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 17px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    min-height: 80px; 
+
+    p {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    strong {
+      color: #555;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .status-connected { color: #4CAF50; } // Green
+  .status-connecting { color: #2196F3; } // Blue
+  .status-disconnecting { color: #FF9800; } // Orange
+  .status-disconnected { color: #757575; } // Grey
+  .status-error, .status-mic-permission-denied, .status-configuration-error, .status-start-error, .status-network-error {
+    color: #f44336; // Red
+  }
+
+  .error-message {
+    color: #D32F2F; // Darker Red
+    margin-top: 20px;
+    padding: 12px;
+    border: 1px solid #FFCDD2; // Light Red Border
+    border-radius: 5px;
+    background-color: #FFEBEE; // Light Red Background
+    text-align: left;
+
+    p {
+      margin: 0;
+    }
+  }
+} 
