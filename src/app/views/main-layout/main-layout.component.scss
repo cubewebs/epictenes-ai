@@ -1,86 +1,119 @@
-$white: #f1f1f1;
-$black: #141414;
-
-
 .navbar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
+  flex-direction: column;
   background-color: var(--bg-color);
   border-bottom: 1px solid var(--card-border-color);
   position: sticky;
   top: 0;
   z-index: 1000;
+  padding: 0;
+}
 
-  .logo {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--primary-color);
-  }
+.navbar-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
 
-  .nav-links {
-    display: flex;
-    gap: 1rem;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
 
-    a {
-      color: var(--text-color);
-      text-decoration: none;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-      
-      &:hover,
-      &:focus {
-        cursor: pointer;
-        background-color: transparent;
-      }
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
 
-      &.active {
-        background-color: transparent;
-        color: var(--button-hover-text-color);
-      }
-    }
-  }
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
 
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--text-color);
-    cursor: pointer;
-  }
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: transparent;
+  color: var(--button-hover-text-color);
+}
+
+.nav-links a.active {
+  color: var(--button-hover-text-color);
+  background-color: transparent;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
 }
 
 .mobile-menu {
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-color);
-  position: absolute;
-  top: 100%;
   width: 100%;
-  left: 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-color);
+  box-shadow: inset 0 4px 6px var(--shadow-color);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
 
-  a {
-    padding: 1rem;
-    border-bottom: 1px solid var(--card-border-color);
-    color: var(--text-color);
-    text-decoration: none;
-    &:hover,
-    &.active {
-      background-color: var(--card-hover-bg-color);
-    }
-  }
+.mobile-menu a {
+  padding: 1rem;
+  border-bottom: 1px solid var(--card-border-color);
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  background-color: var(--card-hover-bg-color);
+}
+
+.navbar.menu-open .mobile-menu {
+  max-height: 100vh;
 }
 
 .content {
   padding: 1rem;
   min-height: calc(100vh - 3.5rem); /* approximate header height */
-  height: 100%;
-  // background-color: var(--bg-color);
   background: var(--bg-color);
   color: var(--text-color);
+}
+
+.login-logout-button {
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  border: 1px solid var(--button-color);
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.login-logout-button:hover {
+  background-color: var(--button-hover-color);
+  color: var(--button-hover-text-color);
+}
+
+.mobile-menu .login-logout-button {
+  margin: 1rem;
+  width: calc(100% - 2rem);
 }
 
 @media (max-width: 768px) {

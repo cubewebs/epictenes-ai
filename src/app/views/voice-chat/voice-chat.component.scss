@@ -9,23 +9,23 @@ $card-border-color: #304468;
   text-align: center;
   padding: 20px;
   max-width: 600px;
-  margin: 140px auto;
-  border: 1px solid #202429;
+  margin: 40px auto;
+  border: 1px solid var(--card-border-color);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: $card-bg-color;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  background-color: var(--card-bg-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   .voice-chat-title {
-    color: $card-text-color;
+    color: var(--card-title-color);
     margin-bottom: 75px;
   }
 
   h2 {
-    color: #333;
+    color: var(--card-subtitle-color);
     margin-bottom: 75px;
   }
 
@@ -44,7 +44,7 @@ $card-border-color: #304468;
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.1s ease;
-    color: white;
+    color: var(--button-text-color);
 
     &:hover:not(:disabled) {
       opacity: 0.9;
@@ -67,9 +67,11 @@ $card-border-color: #304468;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: var(--primary-color); // Green
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
     &:hover:not(:disabled) {
-      background-color: #f3a621;
+      background-color: var(--button-hover-color);
+      color: var(--button-hover-text-color);
     }
   }
 
@@ -78,11 +80,11 @@ $card-border-color: #304468;
     outline: none;
     border: none;
     border-radius: 4px;
-    background-color: var(--button-color); // Red
+    background-color: var(--secondary-color);
     cursor: pointer;
     color: var(--button-text-color);
     &:hover:not(:disabled) {
-      background-color: #e53935;
+      opacity: 0.8;
     }
   }
 
@@ -93,11 +95,12 @@ $card-border-color: #304468;
     border-radius: 4px;
     font-size: 17px;
     padding: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--card-border-color);
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: var(--bg-color);
     margin-bottom: 20px;
     min-height: 80px; 
+    color: var(--text-color);
 
     p {
       margin: 8px 0;
@@ -105,7 +108,7 @@ $card-border-color: #304468;
     }
 
     strong {
-      color: #555;
+      color: var(--card-subtitle-color);
     }
 
     span {
@@ -113,21 +116,21 @@ $card-border-color: #304468;
     }
   }
 
-  .status-connected { color: #4CAF50; } // Green
-  .status-connecting { color: #2196F3; } // Blue
-  .status-disconnecting { color: #FF9800; } // Orange
-  .status-disconnected { color: #757575; } // Grey
+  .status-connected { color: var(--primary-color); }
+  .status-connecting { color: var(--tertiary-color); }
+  .status-disconnecting { color: var(--primary-color); }
+  .status-disconnected { color: var(--text-color); }
   .status-error, .status-mic-permission-denied, .status-configuration-error, .status-start-error, .status-network-error {
-    color: #f44336; // Red
+    color: var(--secondary-color);
   }
 
   .error-message {
-    color: #D32F2F; // Darker Red
+    color: var(--secondary-color);
     margin-top: 20px;
     padding: 12px;
-    border: 1px solid #FFCDD2; // Light Red Border
+    border: 1px solid var(--secondary-color);
     border-radius: 5px;
-    background-color: #FFEBEE; // Light Red Background
+    background-color: var(--card-bg-color);
     text-align: left;
 
     p {

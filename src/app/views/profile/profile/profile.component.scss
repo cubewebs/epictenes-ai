@@ -4,9 +4,8 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: var(--background-color);
-    min-height: 100vh;
-    color: #e0e0e0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .profile-header {
@@ -17,30 +16,29 @@
     h1 {
       margin: 0;
       margin-right: 10px;
-      color: #ffffff;
+      color: var(--card-title-color);
     }
   
     .edit-icon {
       cursor: pointer;
-      // Removed font-size and color from here as they'll be on the SVG
-      transition: opacity 0.2s ease; // Transition for opacity on hover
+      transition: opacity 0.2s ease;
   
       &:hover {
-        opacity: 0.8; // Slightly dim on hover
+        opacity: 0.8;
       }
   
       .edit-icon-svg {
-          display: block; /* Ensure the SVG is treated as a block element */
-          width: 24px; /* Set the desired size for the icon */
+          display: block;
+          width: 24px;
           height: 24px;
-          // The fill="white" in the SVG itself controls the color
+          fill: var(--text-color);
       }
     }
 }
 
 .loading-state {
   font-size: 1.2em;
-  color: #b0b0b0;
+  color: var(--text-color);
   margin-top: 20px;
 }
 
@@ -52,9 +50,10 @@
     max-width: 800px;
     margin-bottom: 20px;
     padding: 20px;
-    background-color: #2a2a2a;
+    background-color: var(--card-bg-color);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    border: 1px solid var(--card-border-color);
 }
 
 .form-columns {
@@ -81,18 +80,18 @@
         display: block;
         margin-bottom: 8px;
         font-weight: bold;
-        color: #b0b0b0;
+        color: var(--card-subtitle-color);
     }
 
     .display-value {
         width: 100%;
         padding: 12px;
-        border: 1px solid #555;
+        border: 1px solid var(--card-border-color);
         border-radius: 4px;
         box-sizing: border-box;
         font-size: 1em;
-        background-color: #3a3a3a;
-        color: #ffffff;
+        background-color: var(--bg-color);
+        color: var(--card-text-color);
         word-break: break-word;
     }
 
@@ -105,20 +104,20 @@
         }
         .terms-status {
             font-size: 1em;
-            color: #ffffff;
+            color: var(--card-text-color);
         }
         .display-value {
             padding: 0;
             border: none;
             background-color: transparent;
-            color: #ffffff;
+            color: var(--card-text-color);
             word-break: normal;
         }
      }
 }
 
 .error-message {
-    color: #ff6b6b;
+    color: var(--secondary-color);
     font-size: 0.85em;
     margin-top: 5px;
 }

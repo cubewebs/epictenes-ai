@@ -2,8 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px; /* Default width, can be made responsive */
-  height: 200px; /* Default height, can be made responsive */
+  width: 50vw;
+  max-width: 200px;
+  height: 50vw;
+  max-height: 200px;
   margin-bottom: 20px;
 }
 

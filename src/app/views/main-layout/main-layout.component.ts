@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '@supabase/supabase-js';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-main-layout',
@@ -16,9 +17,9 @@ import { User } from '@supabase/supabase-js';
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss']
 })
-export class MainLayoutComponent {
-  menuOpen = false;
+export class MainLayoutComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
+  menuOpen = false;
   user$: Observable<User | null>;
 
   constructor(private authService: AuthService, private router: Router) {
@@ -33,17 +34,22 @@ export class MainLayoutComponent {
     this.isLoggedIn$ = this.user$.pipe(map(user => !!user));
   }
 
+  ngOnInit(): void {}
+
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
   }
 
   async toggleLoginLogout(): Promise<void> {
-    const user = await this.authService.currentUser$.pipe(map(u => u && typeof u !== 'boolean' ? u : null)).toPromise();
-    if (user) {
+    const isLoggedIn = await firstValueFrom(this.isLoggedIn$);
+    if (isLoggedIn) {
       await this.authService.signOut();
       this.router.navigate(['/auth/login']);
-    } else {
-      this.router.navigate(['/auth/login']);
     }
+  }
+
+  async logout() {
+    await this.authService.signOut();
+    this.router.navigate(['/auth/login']);
   }
 } 

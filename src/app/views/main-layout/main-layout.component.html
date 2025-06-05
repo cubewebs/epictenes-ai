@@ -1,19 +1,21 @@
-<header class="navbar">
-  <div class="logo">Epictenes</div>
-  <nav class="nav-links">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-    <a routerLink="/profile" routerLinkActive="active">Profile</a>
-    <a routerLink="/session" routerLinkActive="active">Session</a>
-    <button class="login-logout-button" (click)="toggleLoginLogout()">{{ (isLoggedIn$ | async) ? 'Logout' : 'Login' }}</button>
-  </nav>
-  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+<header class="navbar" [class.menu-open]="menuOpen">
+  <div class="navbar-main">
+    <div class="logo"><img src="assets/imgs/logo.png" width="30" height="30" alt="Epictenes Logo" class="logo-image"><span>Epictenes</span></div>
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/profile" routerLinkActive="active">Profile</a>
+      <a routerLink="/session" routerLinkActive="active">Session</a>
+      <button class="login-logout-button" (click)="toggleLoginLogout()">{{ (isLoggedIn$ | async) ? 'Logout' : 'Login' }}</button>
+    </nav>
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  </div>
+  <div class="mobile-menu">
+    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="toggleMenu()">Home</a>
+    <a routerLink="profile" routerLinkActive="active" (click)="toggleMenu()">Profile</a>
+    <a routerLink="session" routerLinkActive="active" (click)="toggleMenu()">Session</a>
+    <button class="login-logout-button" (click)="toggleLoginLogout(); toggleMenu()">{{ (isLoggedIn$ | async) ? 'Logout' : 'Login' }}</button>
+  </div>
 </header>
-<div class="mobile-menu" *ngIf="menuOpen">
-  <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="toggleMenu()">Home</a>
-  <a routerLink="profile" routerLinkActive="active" (click)="toggleMenu()">Profile</a>
-  <a routerLink="session" routerLinkActive="active" (click)="toggleMenu()">Session</a>
-  <button class="login-logout-button" (click)="toggleLoginLogout(); toggleMenu()">{{ (isLoggedIn$ | async) ? 'Logout' : 'Login' }}</button>
-</div>
 <main class="content">
   <router-outlet></router-outlet>
-</main> 
+</main>
